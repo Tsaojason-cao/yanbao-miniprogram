@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/camera/camera",
+    "pages/edit/edit",
+    "pages/gallery/gallery",
+    "pages/spots/spots",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#8B5CF6",
+    "navigationBarTitleText": "YanBao AI",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F5F5"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#EC4899",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/camera/camera",
+        "text": "相机",
+        "iconPath": "images/tab-camera.png",
+        "selectedIconPath": "images/tab-camera-active.png"
+      },
+      {
+        "pagePath": "pages/gallery/gallery",
+        "text": "相册",
+        "iconPath": "images/tab-gallery.png",
+        "selectedIconPath": "images/tab-gallery-active.png"
+      },
+      {
+        "pagePath": "pages/spots/spots",
+        "text": "机位",
+        "iconPath": "images/tab-spots.png",
+        "selectedIconPath": "images/tab-spots-active.png"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "我的",
+        "iconPath": "images/tab-settings.png",
+        "selectedIconPath": "images/tab-settings-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,1 @@
+Page({data:{photos:[]},onShow(){const photos=wx.getStorageSync("photos")||[];this.setData({photos})},previewPhoto(e){const index=e.currentTarget.dataset.index;wx.previewImage({current:this.data.photos[index],urls:this.data.photos})},goToCamera(){wx.navigateTo({url:"/pages/camera/camera"})}})

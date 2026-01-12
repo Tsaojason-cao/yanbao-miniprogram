@@ -1,0 +1,61 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- Hero Section -->
+  <view class="hero-section">
+    <image class="hero-logo" src="/images/logo.png" mode="aspectFit"></image>
+    <view class="hero-title">YanBao AI</view>
+    <view class="hero-subtitle">专业摄影 · AI智能修图</view>
+    <view class="hero-tags">
+      <view class="tag tag-primary">40个机位</view>
+      <view class="tag tag-purple">12种LUT</view>
+      <view class="tag tag-primary">AI影集</view>
+    </view>
+  </view>
+
+  <!-- Features Section -->
+  <view class="section-title">核心功能</view>
+  <view class="features-grid">
+    <view class="feature-card" bindtap="goToSpots">
+      <view class="feature-icon">📍</view>
+      <view class="feature-name">真实机位</view>
+      <view class="feature-desc">40个精选拍摄点</view>
+    </view>
+    <view class="feature-card" bindtap="goToCamera">
+      <view class="feature-icon">📷</view>
+      <view class="feature-name">专业相机</view>
+      <view class="feature-desc">7维美颜调节</view>
+    </view>
+    <view class="feature-card" bindtap="goToEdit">
+      <view class="feature-icon">🎨</view>
+      <view class="feature-name">LUT滤镜</view>
+      <view class="feature-desc">12种预设风格</view>
+    </view>
+    <view class="feature-card" bindtap="goToGallery">
+      <view class="feature-icon">🤖</view>
+      <view class="feature-name">AI影集</view>
+      <view class="feature-desc">智能生成视频</view>
+    </view>
+  </view>
+
+  <!-- Recent Spots -->
+  <view class="section-title">热门机位</view>
+  <view class="spots-list">
+    <view class="spot-card" wx:for="{{spots}}" wx:key="id" bindtap="viewSpot" data-id="{{item.id}}">
+      <image class="spot-image" src="{{item.image}}" mode="aspectFill"></image>
+      <view class="spot-info">
+        <view class="spot-name">{{item.name}}</view>
+        <view class="spot-meta">
+          <view class="spot-rating">⭐ {{item.rating}}</view>
+          <view class="spot-distance">📍 {{item.distance}}</view>
+        </view>
+        <view class="spot-time">🌅 {{item.bestTime}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Quick Actions -->
+  <view class="quick-actions">
+    <button class="btn-primary" bindtap="goToCamera">立即拍摄</button>
+    <button class="btn-secondary" bindtap="goToGallery">查看相册</button>
+  </view>
+</view>
