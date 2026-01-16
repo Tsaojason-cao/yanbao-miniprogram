@@ -5,7 +5,8 @@
     "pages/edit/edit",
     "pages/gallery/gallery",
     "pages/spots/spots",
-    "pages/settings/settings"
+    "pages/settings/settings",
+    "pages/membership/membership"
   ],
   "window": {
     "backgroundTextStyle": "light",

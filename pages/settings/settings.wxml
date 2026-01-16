@@ -1,0 +1,71 @@
+<!--settings.wxml-->
+<view class="container">
+  <!-- User Info -->
+  <view class="user-section">
+    <image class="avatar" src="/images/avatar-default.png" mode="aspectFill"></image>
+    <view class="user-info">
+      <view class="username">Sanmu 用户</view>
+      <view class="user-id">ID: {{userId}}</view>
+    </view>
+  </view>
+
+  <!-- Membership Card -->
+  <view class="membership-card" bindtap="goToMembership">
+    <view class="membership-header">
+      <view class="membership-badge" style="background: {{membershipColor}}">
+        <text class="badge-icon">{{membershipIcon}}</text>
+        <text class="badge-text">{{membershipName}}</text>
+      </view>
+      <text class="arrow">›</text>
+    </view>
+    <view class="membership-tip">{{membershipTip}}</view>
+  </view>
+
+  <!-- Settings List -->
+  <view class="settings-section">
+    <view class="section-title">通用设置</view>
+    <view class="settings-list">
+      <view class="settings-item" bindtap="clearCache">
+        <view class="item-left">
+          <text class="item-icon">🗑️</text>
+          <text class="item-label">清除缓存</text>
+        </view>
+        <view class="item-right">
+          <text class="item-value">{{cacheSize}}</text>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="settings-item" bindtap="checkUpdate">
+        <view class="item-left">
+          <text class="item-icon">🔄</text>
+          <text class="item-label">检查更新</text>
+        </view>
+        <view class="item-right">
+          <text class="item-value">v2.4.1</text>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="settings-item" bindtap="showAbout">
+        <view class="item-left">
+          <text class="item-icon">ℹ️</text>
+          <text class="item-label">关于我们</text>
+        </view>
+        <view class="item-right">
+          <text class="arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Quick Actions -->
+  <view class="actions-section">
+    <button class="action-btn" bindtap="contactSupport">
+      联系客服
+    </button>
+    <button class="action-btn action-btn-secondary" bindtap="shareApp">
+      分享给好友
+    </button>
+  </view>
+</view>

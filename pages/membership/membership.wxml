@@ -1,0 +1,114 @@
+<!--membership.wxml-->
+<view class="container">
+  <!-- Header -->
+  <view class="header">
+    <view class="header-title">会员中心</view>
+    <view class="header-subtitle">解锁全部专业功能</view>
+  </view>
+
+  <!-- Current Membership -->
+  <view class="current-membership">
+    <view class="current-badge" style="background: {{currentMembershipInfo.color}}">
+      <text class="badge-icon">{{currentMembershipInfo.icon}}</text>
+      <text class="badge-name">{{currentMembershipInfo.name}}</text>
+    </view>
+    <view class="current-expire" wx:if="{{expireDate}}">
+      有效期至：{{expireDate}}
+    </view>
+  </view>
+
+  <!-- Membership Tiers -->
+  <view class="tiers-section">
+    <view class="tier-card {{currentTier === 'free' ? 'active' : ''}}" bindtap="selectTier" data-tier="free">
+      <view class="tier-header">
+        <text class="tier-icon">🌱</text>
+        <view class="tier-info">
+          <view class="tier-name">免费版</view>
+          <view class="tier-price">免费使用</view>
+        </view>
+      </view>
+      <view class="tier-features">
+        <view class="feature-item" wx:for="{{freeTierFeatures}}" wx:key="index">
+          <text class="feature-icon">✓</text>
+          <text class="feature-text">{{item}}</text>
+        </view>
+      </view>
+      <button class="tier-btn tier-btn-free" wx:if="{{currentTier === 'free'}}">当前版本</button>
+    </view>
+
+    <view class="tier-card tier-card-pro {{currentTier === 'pro' ? 'active' : ''}}" bindtap="selectTier" data-tier="pro">
+      <view class="tier-badge">推荐</view>
+      <view class="tier-header">
+        <text class="tier-icon">🌲</text>
+        <view class="tier-info">
+          <view class="tier-name">专业版</view>
+          <view class="tier-price">¥98<text class="price-unit">/月</text></view>
+        </view>
+      </view>
+      <view class="tier-features">
+        <view class="feature-item" wx:for="{{proTierFeatures}}" wx:key="index">
+          <text class="feature-icon">✓</text>
+          <text class="feature-text">{{item}}</text>
+        </view>
+      </view>
+      <button class="tier-btn tier-btn-pro" wx:if="{{currentTier !== 'pro'}}" bindtap="upgradeToPro">
+        立即升级
+      </button>
+      <button class="tier-btn tier-btn-pro" wx:else>当前版本</button>
+    </view>
+
+    <view class="tier-card tier-card-master {{currentTier === 'master' ? 'active' : ''}}" bindtap="selectTier" data-tier="master">
+      <view class="tier-badge tier-badge-master">大师专属</view>
+      <view class="tier-header">
+        <text class="tier-icon">👑</text>
+        <view class="tier-info">
+          <view class="tier-name">大师版</view>
+          <view class="tier-price">¥298<text class="price-unit">/月</text></view>
+        </view>
+      </view>
+      <view class="tier-features">
+        <view class="feature-item" wx:for="{{masterTierFeatures}}" wx:key="index">
+          <text class="feature-icon">✓</text>
+          <text class="feature-text">{{item}}</text>
+        </view>
+      </view>
+      <button class="tier-btn tier-btn-master" wx:if="{{currentTier !== 'master'}}" bindtap="upgradeToMaster">
+        立即升级
+      </button>
+      <button class="tier-btn tier-btn-master" wx:else>当前版本</button>
+    </view>
+  </view>
+
+  <!-- Feature Comparison -->
+  <view class="comparison-section">
+    <view class="section-title">功能对比</view>
+    <view class="comparison-table">
+      <view class="comparison-row comparison-header">
+        <view class="comparison-cell">功能</view>
+        <view class="comparison-cell">免费版</view>
+        <view class="comparison-cell">专业版</view>
+        <view class="comparison-cell">大师版</view>
+      </view>
+      <view class="comparison-row" wx:for="{{comparisonData}}" wx:key="feature">
+        <view class="comparison-cell comparison-feature">{{item.feature}}</view>
+        <view class="comparison-cell">{{item.free}}</view>
+        <view class="comparison-cell">{{item.pro}}</view>
+        <view class="comparison-cell">{{item.master}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- FAQ -->
+  <view class="faq-section">
+    <view class="section-title">常见问题</view>
+    <view class="faq-item" wx:for="{{faqList}}" wx:key="index" bindtap="toggleFaq" data-index="{{index}}">
+      <view class="faq-question">
+        <text>{{item.question}}</text>
+        <text class="faq-arrow {{item.expanded ? 'expanded' : ''}}">›</text>
+      </view>
+      <view class="faq-answer {{item.expanded ? 'show' : ''}}">
+        {{item.answer}}
+      </view>
+    </view>
+  </view>
+</view>
