@@ -1,0 +1,31 @@
+<!--edit.wxml-->
+<view class="container">
+  <view class="preview-section">
+    <image class="preview-image" src="{{imagePath}}" mode="aspectFit"></image>
+  </view>
+
+  <view class="lut-section">
+    <view class="section-title">LUT滤镜</view>
+    <scroll-view class="lut-list" scroll-x>
+      <view class="lut-item {{currentLut === item.id ? 'active' : ''}}" 
+            wx:for="{{luts}}" 
+            wx:key="id" 
+            bindtap="selectLut" 
+            data-id="{{item.id}}">
+        <image class="lut-thumbnail" src="{{item.thumbnail}}" mode="aspectFill"></image>
+        <view class="lut-name">{{item.nameZh}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="intensity-section">
+    <view class="intensity-label">强度</view>
+    <slider value="{{intensity}}" min="0" max="100" bindchange="onIntensityChange" activeColor="#EC4899"/>
+    <view class="intensity-value">{{intensity}}%</view>
+  </view>
+
+  <view class="actions">
+    <button class="btn-secondary" bindtap="cancel">取消</button>
+    <button class="btn-primary" bindtap="save">保存</button>
+  </view>
+</view>

@@ -1,29 +1,58 @@
-<!--edit.wxml-->
+<!--edit.wxml - 三级漏斗交互模型-->
 <view class="container">
+  <!-- Image Preview -->
   <view class="preview-section">
     <image class="preview-image" src="{{imagePath}}" mode="aspectFit"></image>
   </view>
 
-  <view class="lut-section">
-    <view class="section-title">LUT滤镜</view>
-    <scroll-view class="lut-list" scroll-x>
-      <view class="lut-item {{currentLut === item.id ? 'active' : ''}}" 
-            wx:for="{{luts}}" 
-            wx:key="id" 
-            bindtap="selectLut" 
-            data-id="{{item.id}}">
-        <image class="lut-thumbnail" src="{{item.thumbnail}}" mode="aspectFill"></image>
-        <view class="lut-name">{{item.nameZh}}</view>
+  <!-- 一级：大师滤镜 -->
+  <view class="level-section">
+    <view class="section-header">
+      <text class="section-title">大师滤镜</text>
+    </view>
+    <scroll-view class="master-scroll" scroll-x>
+      <view class="master-item {{currentMaster === item.id ? 'active' : ''}}" 
+            wx:for="{{masterFilters}}" wx:key="id"
+            bindtap="selectMaster" data-id="{{item.id}}">
+        <view class="master-name">{{item.name}}</view>
+        <view class="master-style">{{item.style}}</view>
       </view>
     </scroll-view>
   </view>
 
-  <view class="intensity-section">
-    <view class="intensity-label">强度</view>
-    <slider value="{{intensity}}" min="0" max="100" bindchange="onIntensityChange" activeColor="#EC4899"/>
-    <view class="intensity-value">{{intensity}}%</view>
+  <!-- 二级：核心参数 -->
+  <view class="level-section">
+    <view class="section-header">
+      <text class="section-title">核心调节</text>
+    </view>
+    <view class="core-params">
+      <view class="param-item" wx:for="{{coreParams}}" wx:key="id">
+        <view class="param-label">{{item.name}}</view>
+        <slider value="{{item.value}}" min="0" max="100" 
+                bindchange="onParamChange" data-id="{{item.id}}"
+                activeColor="#2D5F3F"/>
+      </view>
+    </view>
   </view>
 
+  <!-- 三级：高级参数 -->
+  <view class="level-section advanced-section {{advancedExpanded ? 'expanded' : ''}}">
+    <view class="section-header" bindtap="toggleAdvanced">
+      <text class="section-title">高级参数</text>
+      <text class="expand-arrow">›</text>
+    </view>
+    <view class="advanced-params" wx:if="{{advancedExpanded}}">
+      <view class="param-item" wx:for="{{advancedParams}}" wx:key="id">
+        <view class="param-label">{{item.name}}</view>
+        <slider value="{{item.value}}" min="0" max="100" 
+                disabled="{{item.locked}}"
+                activeColor="#2D5F3F"/>
+        <view class="lock-badge" wx:if="{{item.locked}}">🔒 {{item.tier}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Actions -->
   <view class="actions">
     <button class="btn-secondary" bindtap="cancel">取消</button>
     <button class="btn-primary" bindtap="save">保存</button>
