@@ -1,6 +1,6 @@
-# YanBao AI 微信小程序
+# Sanmu AI 微信小程序
 
-YanBao AI是一款专业摄影应用的微信小程序版本，集成40个真实机位推荐、12种LUT预设、AI影集生成和专业相机功能。
+Sanmu AI是一款专业摄影应用的微信小程序版本，集成40个真实机位推荐、12种LUT预设、AI影集生成和专业相机功能。
 
 ## 功能特性
 
@@ -50,7 +50,7 @@ YanBao AI是一款专业摄影应用的微信小程序版本，集成40个真实
 ## 项目结构
 
 ```
-yanbao-miniprogram/
+sanmu-miniprogram/
 ├── app.js                 # 小程序入口文件
 ├── app.json               # 全局配置（页面路由、TabBar、窗口样式）
 ├── app.wxss               # 全局样式
@@ -82,7 +82,7 @@ yanbao-miniprogram/
 ### 2. 导入项目
 1. 打开微信开发者工具
 2. 选择"导入项目"
-3. 选择项目目录：`/home/ubuntu/yanbao-miniprogram`
+3. 选择项目目录：`/home/ubuntu/sanmu-miniprogram`
 4. 填入AppID（或使用测试号）
 5. 点击"导入"
 
@@ -112,7 +112,7 @@ yanbao-miniprogram/
   "pages": ["页面路径列表"],
   "window": {
     "navigationBarBackgroundColor": "#8B5CF6",  // 导航栏背景色（紫色）
-    "navigationBarTitleText": "YanBao AI",      // 导航栏标题
+    "navigationBarTitleText": "Sanmu AI",      // 导航栏标题
     "navigationBarTextStyle": "white"            // 导航栏文字颜色
   },
   "tabBar": {
@@ -233,9 +233,9 @@ yanbao-miniprogram/
 
 - [微信小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/framework/)
 - [微信开发者工具下载](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
-- [YanBao AI官网](https://tsaojason-cao.github.io/yanbao-screenshots-showcase/)
-- [GitHub仓库](https://github.com/Tsaojason-cao/yanbao-imaging-studio)
+- [Sanmu AI官网](https://tsaojason-cao.github.io/sanmu-screenshots-showcase/)
+- [GitHub仓库](https://github.com/Tsaojason-cao/sanmu-imaging-studio)
 
 ## 许可证
 
-© 2025 YanBao AI. All rights reserved.
+© 2025 Sanmu AI. All rights reserved.

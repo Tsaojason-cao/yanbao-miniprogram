@@ -3,7 +3,7 @@
   <!-- Hero Section -->
   <view class="hero-section">
     <image class="hero-logo" src="/images/logo.png" mode="aspectFit"></image>
-    <view class="hero-title">YanBao AI</view>
+    <view class="hero-title">Sanmu AI</view>
     <view class="hero-subtitle">专业摄影 · AI智能修图</view>
     <view class="hero-tags">
       <view class="tag tag-primary">40个机位</view>

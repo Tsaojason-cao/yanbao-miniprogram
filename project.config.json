@@ -1,5 +1,5 @@
 {
-  "description": "YanBao AI微信小程序 - 专业摄影AI智能修图",
+  "description": "Sanmu AI微信小程序 - 专业摄影AI智能修图",
   "packOptions": {
     "ignore": [],
     "include": []
@@ -42,7 +42,7 @@
   "compileType": "miniprogram",
   "libVersion": "3.5.7",
   "appid": "touristappid",
-  "projectname": "yanbao-miniprogram",
+  "projectname": "sanmu-miniprogram",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
