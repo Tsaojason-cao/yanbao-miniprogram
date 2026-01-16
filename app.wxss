@@ -1,79 +1,84 @@
-/**app.wxss**/
+/**app.wxss - Sanmu AI 全局样式 **/
+
+/* ==================== 全局变量 ==================== */
 page {
-  background-color: #F5F5F5;
-  font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --primary-color: #2D5F3F;
+  --primary-dark: #1F4529;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F9FAFB;
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --border-light: #E5E7EB;
+  --spacing-sm: 16rpx;
+  --spacing-md: 24rpx;
+  --spacing-lg: 32rpx;
+  --radius-md: 16rpx;
+  --radius-lg: 24rpx;
+  --radius-xl: 48rpx;
+  --shadow-md: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  background-color: var(--bg-secondary);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
-/* 全局容器 */
+/* ==================== 容器 ==================== */
 .container {
   min-height: 100vh;
-  padding: 20rpx;
-  box-sizing: border-box;
+  background: var(--bg-secondary);
 }
 
-/* 卡片样式 */
+/* ==================== 卡片 ==================== */
 .card {
-  background: #FFFFFF;
-  border-radius: 24rpx;
-  padding: 32rpx;
-  margin-bottom: 24rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--spacing-md);
 }
 
-/* 按钮样式 */
+/* ==================== 按钮 ==================== */
 .btn-primary {
-  background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: #FFFFFF;
-  border-radius: 48rpx;
+  border-radius: var(--radius-xl);
   padding: 24rpx 48rpx;
   font-size: 32rpx;
   font-weight: 600;
   border: none;
 }
 
+.btn-primary::after {
+  border: none;
+}
+
 .btn-secondary {
-  background: rgba(139, 92, 246, 0.1);
-  color: #8B5CF6;
-  border-radius: 48rpx;
+  background: var(--bg-primary);
+  color: var(--primary-color);
+  border: 2rpx solid var(--primary-color);
+  border-radius: var(--radius-xl);
   padding: 24rpx 48rpx;
   font-size: 32rpx;
   font-weight: 600;
-  border: 2rpx solid #8B5CF6;
 }
 
-/* 标题样式 */
+.btn-secondary::after {
+  border: none;
+}
+
+/* ==================== 文本 ==================== */
 .title {
   font-size: 48rpx;
   font-weight: 700;
-  color: #333333;
+  color: var(--text-primary);
   margin-bottom: 16rpx;
 }
 
 .subtitle {
   font-size: 28rpx;
-  color: #999999;
-  margin-bottom: 32rpx;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
 }
 
-/* 图标样式 */
-.icon {
-  width: 48rpx;
-  height: 48rpx;
-}
-
-.icon-large {
-  width: 96rpx;
-  height: 96rpx;
-}
-
-/* 分隔线 */
-.divider {
-  height: 1rpx;
-  background: #E5E5E5;
-  margin: 32rpx 0;
-}
-
-/* 标签样式 */
+/* ==================== 标签 ==================== */
 .tag {
   display: inline-block;
   padding: 8rpx 24rpx;
@@ -83,35 +88,31 @@ page {
 }
 
 .tag-primary {
-  background: rgba(236, 72, 153, 0.1);
-  color: #EC4899;
+  background: rgba(45, 95, 63, 0.1);
+  color: var(--primary-color);
 }
 
-.tag-purple {
-  background: rgba(139, 92, 246, 0.1);
-  color: #8B5CF6;
+/* ==================== 工具类 ==================== */
+.flex {
+  display: flex;
 }
 
-/* 加载状态 */
-.loading {
-  text-align: center;
-  padding: 80rpx 0;
-  color: #999999;
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* 空状态 */
-.empty {
-  text-align: center;
-  padding: 120rpx 0;
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.empty-icon {
-  font-size: 120rpx;
-  color: #CCCCCC;
-  margin-bottom: 24rpx;
+.gap-sm {
+  gap: var(--spacing-sm);
 }
 
-.empty-text {
-  font-size: 28rpx;
-  color: #999999;
+.gap-md {
+  gap: var(--spacing-md);
 }
