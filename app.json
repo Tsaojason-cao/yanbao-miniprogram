@@ -10,14 +10,14 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#8B5CF6",
+    "navigationBarBackgroundColor": "#2D5F3F",
     "navigationBarTitleText": "Sanmu AI",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#F5F5F5"
   },
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#EC4899",
+    "selectedColor": "#2D5F3F",
     "backgroundColor": "#FFFFFF",
     "borderStyle": "black",
     "list": [
