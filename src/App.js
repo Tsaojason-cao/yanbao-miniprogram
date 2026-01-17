@@ -16,7 +16,7 @@ const App = () => (
     <IonReactRouter>
       <IonRouterOutlet>
         <Route exact path="/home">
-          <h1>Sanmu AI Home</h1>
+          <h1>yanbao AI Home</h1>
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />

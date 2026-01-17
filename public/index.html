@@ -7,9 +7,22 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Sanmu AI - 注入灵魂的摄影大师"
+      content="yanbao AI - 注入灵魂的摄影大师"
     />
-    <title>Sanmu AI</title>
+    <title>yanbao AI</title>
+    <script>
+      // Capacitor调试工具
+      console.log('[yanbao AI] Index.html loaded');
+      window.onerror = function(msg, url, line, col, error) {
+        var errorMsg = 'Error: ' + msg + '\nURL: ' + url + '\nLine: ' + line;
+        console.error('[yanbao AI Error]', errorMsg);
+        alert('[yanbao AI Debug]\n' + errorMsg);
+        return false;
+      };
+      window.addEventListener('load', function() {
+        console.log('[yanbao AI] Window loaded');
+      });
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

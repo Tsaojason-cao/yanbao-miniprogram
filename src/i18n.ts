@@ -4,15 +4,15 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
-      "welcome": "Welcome to Sanmu AI",
+      "welcome": "Welcome to yanbao AI",
       "thinking": "Master is thinking...",
       "share": "Share Masterpiece"
     }
   },
   zh: {
     translation: {
-      "welcome": "欢迎来到 Sanmu AI",
-      "thinking": "Sanmu AI 思考中...",
+      "welcome": "欢迎来到 yanbao AI",
+      "thinking": "yanbao AI 思考中...",
       "share": "分享 AI 杰作"
     }
   }

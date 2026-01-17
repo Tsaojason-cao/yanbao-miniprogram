@@ -1,4 +1,4 @@
-// membership.js - Sanmu AI 会员体系配置
+// membership.js - yanbao AI 会员体系配置
 
 /**
  * 会员等级定义
