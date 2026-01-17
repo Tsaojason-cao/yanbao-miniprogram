@@ -55,11 +55,11 @@ Page({
 
   initParams() {
     const coreParams = [
-      { id: 'skin', label: 'Skin', value: 50, min: 0, max: 100 },
-      { id: 'face', label: 'Face', value: 50, min: 0, max: 100 },
-      { id: 'light', label: 'Light', value: 50, min: 0, max: 100 },
-      { id: 'color', label: 'Color', value: 50, min: 0, max: 100 },
-      { id: 'atmosphere', label: 'Atmosphere', value: 50, min: 0, max: 100 }
+      { id: 'skin', label: '肤质', value: 50, min: 0, max: 100 },
+      { id: 'face', label: '脸型', value: 50, min: 0, max: 100 },
+      { id: 'light', label: '光影', value: 50, min: 0, max: 100 },
+      { id: 'color', label: '色调', value: 50, min: 0, max: 100 },
+      { id: 'atmosphere', label: '氛围', value: 50, min: 0, max: 100 }
     ];
     this.setData({ coreParams, advancedParams: [] });
   },
