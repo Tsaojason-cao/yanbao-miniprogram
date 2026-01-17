@@ -1,0 +1,79 @@
+<!--camera.wxml-->
+<view class="container">
+  <camera 
+    device-position="{{devicePosition}}" 
+    flash="{{flash}}"
+    class="camera-view"
+    bindstop="onCameraStop"
+    binderror="onCameraError">
+    
+    <!-- 顶部控制栏 -->
+    <view class="camera-controls-top">
+      <view class="control-item" bindtap="toggleFlash">
+        <view class="control-icon">{{flash === 'off' ? '⚡️' : '💡'}}</view>
+        <view class="control-label">闪光灯</view>
+      </view>
+      <view class="control-item" bindtap="toggleCamera">
+        <view class="control-icon">🔄</view>
+        <view class="control-label">翻转</view>
+      </view>
+    </view>
+
+    <!-- 相机参数显示 -->
+    <view class="camera-params">
+      <view class="param-item">ISO {{iso}}</view>
+      <view class="param-item">{{shutter}}</view>
+      <view class="param-item">WB {{whiteBalance}}K</view>
+    </view>
+
+    <!-- 美颜滑块 -->
+    <view class="beauty-slider">
+      <view class="slider-label">7D美颜</view>
+      <slider 
+        value="{{beautyLevel}}" 
+        min="0" 
+        max="100" 
+        bindchange="onBeautyChange"
+        activeColor="#EC4899"
+        backgroundColor="rgba(255,255,255,0.3)"
+        block-size="20"
+      />
+      <view class="slider-value">{{beautyLevel}}</view>
+    </view>
+
+    <!-- 底部拍摄按钮 -->
+    <view class="camera-controls-bottom">
+      <view class="gallery-btn" bindtap="goToGallery">
+        <view class="gallery-icon">🖼️</view>
+      </view>
+      <view class="shutter-btn" bindtap="takePhoto">
+        <view class="shutter-inner"></view>
+      </view>
+      <view class="mode-btn" bindtap="showModeSelector">
+        <view class="mode-icon">⚙️</view>
+      </view>
+    </view>
+  </camera>
+
+  <!-- 拍摄模式选择器 -->
+  <view class="mode-selector" wx:if="{{showModes}}">
+    <view class="mode-overlay" bindtap="hideModeSelector"></view>
+    <view class="mode-panel">
+      <view class="mode-title">拍摄模式</view>
+      <view class="mode-list">
+        <view class="mode-item {{currentMode === 'auto' ? 'active' : ''}}" bindtap="selectMode" data-mode="auto">
+          <view class="mode-name">自动</view>
+        </view>
+        <view class="mode-item {{currentMode === 'pro' ? 'active' : ''}}" bindtap="selectMode" data-mode="pro">
+          <view class="mode-name">专业</view>
+        </view>
+        <view class="mode-item {{currentMode === 'portrait' ? 'active' : ''}}" bindtap="selectMode" data-mode="portrait">
+          <view class="mode-name">人像</view>
+        </view>
+        <view class="mode-item {{currentMode === 'landscape' ? 'active' : ''}}" bindtap="selectMode" data-mode="landscape">
+          <view class="mode-name">风景</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

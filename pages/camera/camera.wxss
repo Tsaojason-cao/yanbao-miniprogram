@@ -1,212 +1,163 @@
-/**camera.wxss**/
-.container {
-  padding: 0;
+/* pages/camera/camera.wxss - Leica 极简风格 */
+
+.camera-container {
+  width: 100vw;
   height: 100vh;
+  position: relative;
   background: #000000;
 }
 
-.camera-view {
+.camera-viewfinder {
   width: 100%;
-  height: 100vh;
-  position: relative;
+  height: 95vh;
 }
 
-/* 顶部控制栏 */
-.camera-controls-top {
+.top-toolbar {
   position: absolute;
-  top: 40rpx;
+  top: 60rpx;
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 0 40rpx;
   z-index: 10;
 }
 
-.control-item {
+.tool-icon {
+  width: 80rpx;
+  height: 80rpx;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20rpx);
+  border-radius: 50%;
+}
+
+.icon {
+  font-size: 40rpx;
   color: #FFFFFF;
+  font-weight: 300;
 }
 
-.control-icon {
-  font-size: 48rpx;
-  margin-bottom: 8rpx;
-}
-
-.control-label {
-  font-size: 24rpx;
-  opacity: 0.8;
-}
-
-/* 相机参数 */
-.camera-params {
+.master-carousel {
   position: absolute;
-  top: 140rpx;
-  left: 40rpx;
-  display: flex;
-  flex-direction: column;
-  gap: 12rpx;
-  z-index: 10;
-}
-
-.param-item {
-  background: rgba(0, 0, 0, 0.5);
-  color: #FFFFFF;
-  padding: 8rpx 16rpx;
-  border-radius: 8rpx;
-  font-size: 24rpx;
-  backdrop-filter: blur(10rpx);
-}
-
-/* 美颜滑块 */
-.beauty-slider {
-  position: absolute;
-  bottom: 280rpx;
-  left: 40rpx;
-  right: 40rpx;
-  z-index: 10;
-}
-
-.slider-label {
-  color: #FFFFFF;
-  font-size: 28rpx;
-  margin-bottom: 16rpx;
-  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.5);
-}
-
-.slider-value {
-  color: #FFFFFF;
-  font-size: 24rpx;
-  text-align: right;
-  margin-top: 8rpx;
-}
-
-/* 底部控制栏 */
-.camera-controls-bottom {
-  position: absolute;
-  bottom: 80rpx;
+  bottom: 200rpx;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0 80rpx;
   z-index: 10;
 }
 
-.gallery-btn,
-.mode-btn {
-  width: 96rpx;
-  height: 96rpx;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10rpx);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.master-scroll {
+  white-space: nowrap;
+  padding: 0 40rpx;
 }
 
-.gallery-icon,
-.mode-icon {
-  font-size: 48rpx;
+.master-item {
+  display: inline-block;
+  padding: 16rpx 32rpx;
+  margin-right: 24rpx;
 }
 
-.shutter-btn {
-  width: 144rpx;
-  height: 144rpx;
+.master-item.active .master-abbr {
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 32rpx;
+}
+
+.master-abbr {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 200;
+  letter-spacing: 2rpx;
+}
+
+.shutter-container {
+  position: absolute;
+  bottom: 80rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.shutter-button {
+  width: 140rpx;
+  height: 140rpx;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10rpx);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 6rpx solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.shutter-btn:active {
+.shutter-button:active {
   transform: scale(0.9);
 }
 
 .shutter-inner {
-  width: 112rpx;
-  height: 112rpx;
+  width: 110rpx;
+  height: 110rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
+  background: #FFFFFF;
 }
 
-/* 模式选择器 */
-.mode-selector {
-  position: fixed;
-  top: 0;
+.bottom-hint {
+  position: absolute;
+  bottom: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.hint-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.adjustment-panel {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  height: 80vh;
+  background: rgba(0, 0, 0, 0.95);
+  border-radius: 40rpx 40rpx 0 0;
+  padding: 40rpx;
+  transition: bottom 0.4s ease;
   z-index: 100;
 }
 
-.mode-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+.adjustment-panel.show {
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
 }
 
-.mode-panel {
+.right-toolbar {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #FFFFFF;
-  border-radius: 32rpx 32rpx 0 0;
-  padding: 40rpx;
-  animation: slideUp 0.3s;
+  right: 40rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+  z-index: 10;
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
+.tool-icon-small {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20rpx);
+  border-radius: 50%;
 }
 
-.mode-title {
-  font-size: 36rpx;
-  font-weight: 700;
-  color: #333333;
-  margin-bottom: 32rpx;
-  text-align: center;
-}
-
-.mode-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24rpx;
-}
-
-.mode-item {
-  background: #F5F5F5;
-  border-radius: 16rpx;
-  padding: 32rpx;
-  text-align: center;
-  transition: all 0.3s;
-}
-
-.mode-item.active {
-  background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
-}
-
-.mode-name {
+.icon-small {
   font-size: 32rpx;
-  font-weight: 600;
-  color: #333333;
-}
-
-.mode-item.active .mode-name {
   color: #FFFFFF;
 }
