@@ -12,8 +12,8 @@ const resources = {
   zh: {
     translation: {
       "welcome": "欢迎来到 Sanmu AI",
-      "thinking": "大师思考中...",
-      "share": "分享大师之作"
+      "thinking": "yanbao AI 思考中...",
+      "share": "分享 AI 杰作"
     }
   }
 };
