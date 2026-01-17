@@ -97,8 +97,8 @@ Page({
    */
   showAbout() {
     wx.showModal({
-      title: '关于 yanbao AI',
-      content: 'yanbao AI v2.4.1\n\n专业摄影AI智能修图工具\n深藏功名，极简外露\n\n© 2025 yanbao AI',
+      title: '关于 Sanmu AI',
+      content: 'Sanmu AI v2.4.1\n\n专业摄影AI智能修图工具\n深藏功名，极简外露\n\n© 2025 Sanmu AI',
       showCancel: false,
       confirmText: '知道了'
     })
