@@ -1,114 +1,127 @@
-<!--membership.wxml-->
+<!--pages/membership/membership.wxml-->
 <view class="container">
-  <!-- Header -->
-  <view class="header">
-    <view class="header-title">会员中心</view>
-    <view class="header-subtitle">解锁全部专业功能</view>
+  <!-- Hero Section -->
+  <view class="hero">
+    <view class="brand-tag">
+      <view class="dot"></view>
+      <text>SANMU AI COMMERCIAL V1.0</text>
+    </view>
+    <view class="title-area">
+      <text class="title-line">深藏功名，</text>
+      <text class="title-line highlight">极简外露</text>
+    </view>
+    <text class="subtitle">Unlock the Leica-inspired minimalist workflow.</text>
   </view>
 
-  <!-- Current Membership -->
-  <view class="current-membership">
-    <view class="current-badge" style="background: {{currentMembershipInfo.color}}">
-      <text class="badge-icon">{{currentMembershipInfo.icon}}</text>
-      <text class="badge-name">{{currentMembershipInfo.name}}</text>
+  <!-- Billing Toggle -->
+  <view class="billing-toggle">
+    <text class="label {{billingCycle === 'monthly' ? 'active' : ''}}">Monthly</text>
+    <view class="switch-bg" bindtap="toggleBilling">
+      <view class="switch-knob {{billingCycle === 'yearly' ? 'right' : ''}}"></view>
     </view>
-    <view class="current-expire" wx:if="{{expireDate}}">
-      有效期至：{{expireDate}}
-    </view>
+    <text class="label {{billingCycle === 'yearly' ? 'active' : ''}}">Yearly</text>
+    <view class="save-tag" wx:if="{{billingCycle === 'yearly'}}">SAVE 15%</view>
   </view>
 
-  <!-- Membership Tiers -->
-  <view class="tiers-section">
-    <view class="tier-card {{currentTier === 'free' ? 'active' : ''}}" bindtap="selectTier" data-tier="free">
-      <view class="tier-header">
-        <text class="tier-icon">🌱</text>
-        <view class="tier-info">
-          <view class="tier-name">免费版</view>
-          <view class="tier-price">免费使用</view>
+  <!-- Pricing Cards -->
+  <scroll-view scroll-x="true" class="cards-scroll" enable-flex="true">
+    <view class="cards-container">
+      
+      <!-- Free Tier -->
+      <view class="card">
+        <view class="card-header">
+          <view class="icon-box">
+            <text class="icon-text">📷</text>
+          </view>
+          <text class="tier-name">Free</text>
+          <text class="tier-desc">For casual photographers.</text>
         </view>
-      </view>
-      <view class="tier-features">
-        <view class="feature-item" wx:for="{{freeTierFeatures}}" wx:key="index">
-          <text class="feature-icon">✓</text>
-          <text class="feature-text">{{item}}</text>
+        <view class="price-area">
+          <text class="currency">¥</text>
+          <text class="amount">0</text>
+          <text class="period">/mo</text>
         </view>
+        <view class="features">
+          <view class="feature-item">
+            <text class="check">✓</text> <text>3 Master Filters</text>
+          </view>
+          <view class="feature-item">
+            <text class="check">✓</text> <text>12 Basic Params</text>
+          </view>
+          <view class="feature-item disabled">
+            <text class="cross">×</text> <text>Advanced Params</text>
+          </view>
+        </view>
+        <button class="btn outline">Current Plan</button>
       </view>
-      <button class="tier-btn tier-btn-free" wx:if="{{currentTier === 'free'}}">当前版本</button>
-    </view>
 
-    <view class="tier-card tier-card-pro {{currentTier === 'pro' ? 'active' : ''}}" bindtap="selectTier" data-tier="pro">
-      <view class="tier-badge">推荐</view>
-      <view class="tier-header">
-        <text class="tier-icon">🌲</text>
-        <view class="tier-info">
-          <view class="tier-name">专业版</view>
-          <view class="tier-price">¥98<text class="price-unit">/月</text></view>
+      <!-- Pro Tier (Featured) -->
+      <view class="card featured">
+        <view class="recommend-badge">MOST POPULAR</view>
+        <view class="card-header">
+          <view class="icon-box active">
+            <text class="icon-text">🌲</text>
+          </view>
+          <text class="tier-name">Pro (森友)</text>
+          <text class="tier-desc">Unlock full potential.</text>
         </view>
-      </view>
-      <view class="tier-features">
-        <view class="feature-item" wx:for="{{proTierFeatures}}" wx:key="index">
-          <text class="feature-icon">✓</text>
-          <text class="feature-text">{{item}}</text>
+        <view class="price-area">
+          <text class="currency">¥</text>
+          <text class="amount">{{billingCycle === 'monthly' ? '98' : '83'}}</text>
+          <text class="period">/mo</text>
         </view>
+        <view class="price-sub" wx:if="{{billingCycle === 'yearly'}}">Billed ¥998 yearly</view>
+        <view class="features">
+          <view class="feature-item">
+            <text class="check active">✓</text> <text>All 31 Master Filters</text>
+          </view>
+          <view class="feature-item">
+            <text class="check active">✓</text> <text>29 Advanced Params</text>
+          </view>
+          <view class="feature-item">
+            <text class="check active">✓</text> <text>Cloud Sync (50GB)</text>
+          </view>
+        </view>
+        <button class="btn primary" bindtap="onSubscribePro">Upgrade to Pro</button>
       </view>
-      <button class="tier-btn tier-btn-pro" wx:if="{{currentTier !== 'pro'}}" bindtap="upgradeToPro">
-        立即升级
-      </button>
-      <button class="tier-btn tier-btn-pro" wx:else>当前版本</button>
-    </view>
 
-    <view class="tier-card tier-card-master {{currentTier === 'master' ? 'active' : ''}}" bindtap="selectTier" data-tier="master">
-      <view class="tier-badge tier-badge-master">大师专属</view>
-      <view class="tier-header">
-        <text class="tier-icon">👑</text>
-        <view class="tier-info">
-          <view class="tier-name">大师版</view>
-          <view class="tier-price">¥298<text class="price-unit">/月</text></view>
+      <!-- Master Tier -->
+      <view class="card">
+        <view class="limited-badge">LIMITED</view>
+        <view class="card-header">
+          <view class="icon-box">
+            <text class="icon-text">👑</text>
+          </view>
+          <text class="tier-name">Master (大师)</text>
+          <text class="tier-desc">Ultimate control.</text>
         </view>
-      </view>
-      <view class="tier-features">
-        <view class="feature-item" wx:for="{{masterTierFeatures}}" wx:key="index">
-          <text class="feature-icon">✓</text>
-          <text class="feature-text">{{item}}</text>
+        <view class="price-area">
+          <text class="currency">¥</text>
+          <text class="amount">{{billingCycle === 'monthly' ? '298' : '250'}}</text>
+          <text class="period">/mo</text>
         </view>
+        <view class="price-sub" wx:if="{{billingCycle === 'yearly'}}">Billed ¥2998 yearly</view>
+        <view class="features">
+          <view class="feature-item">
+            <text class="check">✓</text> <text>Everything in Pro</text>
+          </view>
+          <view class="feature-item">
+            <text class="check">✓</text> <text>Custom Matrix</text>
+          </view>
+          <view class="feature-item">
+            <text class="check">✓</text> <text>Priority Queue</text>
+          </view>
+        </view>
+        <button class="btn outline" bindtap="onSubscribeMaster">Become a Master</button>
       </view>
-      <button class="tier-btn tier-btn-master" wx:if="{{currentTier !== 'master'}}" bindtap="upgradeToMaster">
-        立即升级
-      </button>
-      <button class="tier-btn tier-btn-master" wx:else>当前版本</button>
-    </view>
-  </view>
 
-  <!-- Feature Comparison -->
-  <view class="comparison-section">
-    <view class="section-title">功能对比</view>
-    <view class="comparison-table">
-      <view class="comparison-row comparison-header">
-        <view class="comparison-cell">功能</view>
-        <view class="comparison-cell">免费版</view>
-        <view class="comparison-cell">专业版</view>
-        <view class="comparison-cell">大师版</view>
-      </view>
-      <view class="comparison-row" wx:for="{{comparisonData}}" wx:key="feature">
-        <view class="comparison-cell comparison-feature">{{item.feature}}</view>
-        <view class="comparison-cell">{{item.free}}</view>
-        <view class="comparison-cell">{{item.pro}}</view>
-        <view class="comparison-cell">{{item.master}}</view>
-      </view>
     </view>
-  </view>
+  </scroll-view>
 
-  <!-- FAQ -->
-  <view class="faq-section">
-    <view class="section-title">常见问题</view>
-    <view class="faq-item" wx:for="{{faqList}}" wx:key="index" bindtap="toggleFaq" data-index="{{index}}">
-      <view class="faq-question">
-        <text>{{item.question}}</text>
-        <text class="faq-arrow {{item.expanded ? 'expanded' : ''}}">›</text>
-      </view>
-      <view class="faq-answer {{item.expanded ? 'show' : ''}}">
-        {{item.answer}}
-      </view>
-    </view>
+  <!-- Footer Info -->
+  <view class="footer">
+    <text>Restore Purchase</text>
+    <text class="divider">|</text>
+    <text>Terms of Service</text>
   </view>
 </view>
