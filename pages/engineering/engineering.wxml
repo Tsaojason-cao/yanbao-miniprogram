@@ -1,0 +1,87 @@
+<!--pages/engineering/engineering.wxml-->
+<view class="engineering-container">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="title">🔧 Engineering Mode</view>
+    <view class="subtitle">隐藏工程模式</view>
+  </view>
+
+  <!-- 品牌故事 -->
+  <view class="section">
+    <view class="section-title">📖 品牌故事</view>
+    <view class="story-card">
+      <view class="story-text">
+        <text class="highlight">Sanmu AI</text> 诞生于对摄影本质的思考。
+      </view>
+      <view class="story-text">
+        我们相信，真正的摄影不在于技术的堆砌，而在于对光影、构图、情感的理解。
+      </view>
+      <view class="story-text">
+        31 位摄影大师的风格，29 维参数的精密调控，都是为了让每一张照片都能讲述一个故事。
+      </view>
+      <view class="story-text philosophy">
+        <text class="bold">「深藏功名，极简外露」</text>
+      </view>
+      <view class="story-text">
+        这是 Sanmu AI 的哲学，也是我们对 Leica 与 Apple 极简美学的致敬。
+      </view>
+    </view>
+  </view>
+
+  <!-- 极客调试工具 -->
+  <view class="section">
+    <view class="section-title">🛠️ 极客调试工具</view>
+    
+    <!-- 系统信息 -->
+    <view class="debug-card">
+      <view class="debug-item">
+        <text class="debug-label">版本号</text>
+        <text class="debug-value">{{systemInfo.version}}</text>
+      </view>
+      <view class="debug-item">
+        <text class="debug-label">包名</text>
+        <text class="debug-value">{{systemInfo.packageName}}</text>
+      </view>
+      <view class="debug-item">
+        <text class="debug-label">会员等级</text>
+        <text class="debug-value">{{systemInfo.membershipRole}}</text>
+      </view>
+      <view class="debug-item">
+        <text class="debug-label">设备型号</text>
+        <text class="debug-value">{{systemInfo.deviceModel}}</text>
+      </view>
+      <view class="debug-item">
+        <text class="debug-label">微信版本</text>
+        <text class="debug-value">{{systemInfo.wechatVersion}}</text>
+      </view>
+    </view>
+
+    <!-- 调试开关 -->
+    <view class="debug-card">
+      <view class="debug-switch">
+        <text class="debug-label">显示 FPS</text>
+        <switch checked="{{debugMode.showFPS}}" bindchange="toggleFPS" color="#2D5F3F"/>
+      </view>
+      <view class="debug-switch">
+        <text class="debug-label">显示参数值</text>
+        <switch checked="{{debugMode.showParams}}" bindchange="toggleParams" color="#2D5F3F"/>
+      </view>
+      <view class="debug-switch">
+        <text class="debug-label">解锁全部大师</text>
+        <switch checked="{{debugMode.unlockAll}}" bindchange="toggleUnlock" color="#2D5F3F"/>
+      </view>
+    </view>
+
+    <!-- 快捷操作 -->
+    <view class="action-buttons">
+      <button class="action-btn" bindtap="clearCache">清除缓存</button>
+      <button class="action-btn" bindtap="exportLogs">导出日志</button>
+      <button class="action-btn" bindtap="resetSettings">重置设置</button>
+    </view>
+  </view>
+
+  <!-- 关闭按钮 -->
+  <view class="close-btn" bindtap="closePage">
+    <text>关闭</text>
+  </view>
+</view>

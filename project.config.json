@@ -42,6 +42,7 @@
   "compileType": "miniprogram",
   "libVersion": "3.5.7",
   "appid": "touristappid",
+  "packageName": "com.sanmu.ai.pro",
   "projectname": "sanmu-miniprogram",
   "condition": {},
   "editorSetting": {
