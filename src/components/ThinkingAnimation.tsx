@@ -7,7 +7,7 @@ interface ThinkingAnimationProps {
   message?: string;
 }
 
-const ThinkingAnimation: React.FC<ThinkingAnimationProps> = ({ message = "yanbao AI 思考中..." }) => {
+const ThinkingAnimation: React.FC<ThinkingAnimationProps> = ({ message = "Sanmu AI 思考中..." }) => {
   return (
     <div className="thinking-container flex flex-col items-center justify-center p-8">
       <div className="relative">
