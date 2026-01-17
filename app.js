@@ -1,6 +1,13 @@
 // app.js
+const { initUserData, updateLastLogin, checkMembershipExpiry } = require('./utils/userDatabase.js');
+
 App({
   onLaunch() {
+    // 初始化用户数据
+    initUserData();
+    updateLastLogin();
+    checkMembershipExpiry();
+    
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
